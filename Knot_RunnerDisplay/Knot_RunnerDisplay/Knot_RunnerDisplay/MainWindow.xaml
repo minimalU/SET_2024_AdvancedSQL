@@ -1,0 +1,64 @@
+﻿<Window x:Class="Knot_RunnerDisplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Knot_RunnerDisplay"
+        mc:Ignorable="d"
+        Title="Knot_Runner Display" Height="550" Width="800"
+        Background="#171717" Foreground="#e6e6e6">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="centralTimerLabel" Grid.Column="0" Margin="25, 0, 5, 0" Background="Gray" Foreground="#e6e6e6" FontSize="20" 
+                   VerticalAlignment="Center">TIMER</Label>
+            <Label x:Name="timerLabel" Grid.Column="1" Margin="5, 0, 5, 0" Foreground="#e6e6e6" FontSize="30" 
+                   VerticalAlignment="Center"></Label>
+            <Button x:Name="connectionButton"  Grid.Column="2" Margin="180, 15, 25, 15" Click="connectionButton_Click">Connect</Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.4*"></ColumnDefinition>
+                <ColumnDefinition Width="3.2*"></ColumnDefinition>
+                <ColumnDefinition Width="3.4*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="20,5,5,5" Background="Green" Foreground="#e6e6e6" FontSize="15" HorizontalContentAlignment="Center">GOOD</Label>
+            <Label Grid.Column="1" Margin="5,5,5,5" Background="Orange" Foreground="#e6e6e6" FontSize="15" HorizontalContentAlignment="Center">WATCH</Label>
+            <Label Grid.Column="2" Margin="5,5,20,5" Background="Red" Foreground="#e6e6e6" FontSize="15" HorizontalContentAlignment="Center">REPLENISH</Label>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.4*"></ColumnDefinition>
+                <ColumnDefinition Width="3.2*"></ColumnDefinition>
+                <ColumnDefinition Width="3.4*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="20,5,5,20">
+                <ListBox x:Name="greenListbox" Width="250" HorizontalAlignment="Left" BorderThickness="0" 
+                         Background="#2f2f2f" Foreground="#e6e6e6" FontSize="15">
+                </ListBox>
+
+            </Grid>
+            <Grid Grid.Column="1" Margin="5,5,5,20">
+                <ListBox x:Name="orangeListbox" Width="250" HorizontalAlignment="Left" BorderThickness="0" 
+                         Background="#2f2f2f" Foreground="#e6e6e6" FontSize="15"/>
+            </Grid>
+            <Grid Grid.Column="2" Margin="5,5,20,20">
+                <ListBox x:Name="redListbox" Width="250" HorizontalAlignment="Left" BorderThickness="0" 
+                         Background="#2f2f2f" Foreground="#e6e6e6" FontSize="15"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

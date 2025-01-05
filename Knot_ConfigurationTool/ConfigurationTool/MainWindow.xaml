@@ -1,0 +1,54 @@
+﻿<!--
+    FILE : MainWindow.xaml
+    PROJECT : PROG3070 - Project
+    PROGRAMMER : Yujung Park
+    FIRST VERSION : 2024-11-18
+    DESCRIPTION : The MainWindow.xaml completes GUI of the SIMULATOR CONFIGURATION MANAGER of the WPF application.
+    REFERENCES : https://stackoverflow.com/questions/16197928/wpf-combobox-binding-to-observablecollection
+    -->
+    
+<Window x:Class="ConfigurationTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConfigurationTool"
+        mc:Ignorable="d"
+        Title="Simulator Configuration Tool" Height="450" Width="800" ResizeMode="CanResize">
+
+    <Window.Resources>
+        <RoutedUICommand x:Key="PasteFromExcelClick" Text="Paste" />
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+V" Command="{StaticResource PasteFromExcelClick}"/>
+    </Window.InputBindings>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource PasteFromExcelClick}"  
+                    CanExecute="CommandBinding_PasteFromExcelClick_CanExecute"  
+                    Executed="CommandBinding_PasteFromExcelClick_Executed"/>
+    </Window.CommandBindings>
+
+    <Grid>
+
+        <StackPanel>
+            <Grid>
+                <ComboBox x:Name="ConfigCombobox" ItemsSource="{Binding ConfigData}" DisplayMemberPath="ConfigurationId" 
+                          SelectedValuePath="ConfigurationId" SelectedValue="{Binding ConfigIdSelected, Mode=TwoWay}"
+                          HorizontalAlignment="Left" Margin="25, 15, 15, 15" Width="300"/>
+                <Button x:Name="setConfigButton" Width="120" Padding="5" Margin="400, 15, 0, 15" Click="setConfigButton_Click" HorizontalAlignment="Left">Set Configuration</Button>
+            </Grid>
+            <Grid>
+                <Border  Height="130" Margin="25, 10, 25, 10" Background="#e9e9e9" CornerRadius="3" Padding="3">
+                    <TextBlock Name="StatusMessage" Height="130" Foreground="Red" FontSize="11" TextWrapping="Wrap"/>
+                </Border>
+            </Grid>
+            <Grid>
+                <DataGrid x:Name="ConfigDatagrid" Margin="25, 10, 25, 10" SelectionUnit="FullRow"  
+                                   SelectionMode="Extended" Height= "130" AutoGenerateColumns="True">
+                </DataGrid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

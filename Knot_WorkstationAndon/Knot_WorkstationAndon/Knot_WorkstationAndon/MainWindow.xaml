@@ -1,0 +1,135 @@
+﻿<Window x:Class="Knot_WorkstationAndon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:Knot_WorkstationAndon"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Knot_WorkstationAndon"
+        mc:Ignorable="d"
+        Title="Knot_Workstation Andon" Height="570" Width="800"
+        Background="#171717">
+
+    <!--<Grid.ColumnDefinitions>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+    </Grid.ColumnDefinitions>-->
+
+
+
+    <Grid>
+        <StackPanel>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="StationsCombobox" Grid.Row="0" Grid.Column="0" Width="200" Height="30" Margin="25,15,0,5" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                  FontSize="20" DisplayMemberPath="StationName" SelectedValuePath="StationName" />
+                        <Button Grid.Row="0" Grid.Column="1" Margin="5,15,5,15" Click="Button_Click">Start</Button>
+                        <Button x:Name="connectionButton" Grid.Row="0" Grid.Column="2" Margin="5,15,5,15" Click="connectionButton_Click">Connect</Button>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Margin="25,0,5,0" Foreground="#e6e6e6">WORKSTATION STATUS</Label>
+                        <Label Grid.Row="1" Grid.Column="0" Margin="25,0,5,0" Foreground="#e6e6e6">Yield Quantity</Label>
+                        <Label Grid.Row="1" Grid.Column="1" Margin="88,0,5,0" Foreground="#e6e6e6">Target Quantity</Label>
+                        <Label x:Name="yieldQtyLabel" Grid.Row="2" Grid.Column="0" Margin="25,0,5,0" Foreground="#e6e6e6" FontSize="18">0</Label>
+                        <Label x:Name="targetQtyLabel" Grid.Row="2" Grid.Column="1" Margin="88,0,5,0" Foreground="#e6e6e6" FontSize="18">0</Label>
+                    </Grid>
+                </Grid>
+                
+            </Grid>
+            
+            <Grid>
+                <ProgressBar x:Name="qtyProgressbar" Minimum="0" Width="360" Height="12" HorizontalAlignment="Left" Margin="25, 0, 5, 0"/>
+            </Grid>
+            
+            <Grid Margin="25,5,25,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            
+            </Grid>
+            <Grid Margin="25,5,25,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6" FontSize="18">Harness</Label>
+                    <Label x:Name="HarnessLabel"
+                           Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"                           >
+                    </Label>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6"  FontSize="18">Reflector</Label>
+                    <Label x:Name="ReflectorLabel"
+                        Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6"  FontSize="18">Housing</Label>
+                    <Label x:Name="HousingLabel" Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6" FontSize="18">Lens</Label>
+                    <Label x:Name="LensLabel" Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="4" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6"  FontSize="18">Bulb</Label>
+                    <Label x:Name="BulbLabel" Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="5" Margin="5, 0, 5, 0">
+                    <Label Foreground="#e6e6e6"  FontSize="18">Bezel</Label>
+                    <Label x:Name="BezelLabel" Height="70" Foreground="#e6e6e6" FontSize="36" HorizontalContentAlignment="Center" VerticalAlignment="Center"></Label>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="25, 5, 25, 5">
+                <ListBox x:Name="runnerListbox" Width="735" Height="125" Margin="5, 10, 5, 0" HorizontalAlignment="Left" BorderThickness="0" 
+                         Background="#2f2f2f" FontSize="25" Foreground="#e6e6e6"/>
+            </Grid>
+            
+            <!--Debug ListBox-->
+            <Grid Margin="25, 5, 25, 5">
+                <ListBox x:Name="statusListbox" Width="735" Height="110" Margin="5, 10, 5, 0" HorizontalAlignment="Left" BorderThickness="0" 
+              Background="#2f2f2f" Foreground="#e6e6e6" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </Grid>
+
+
+        </StackPanel>
+    </Grid>
+
+</Window>

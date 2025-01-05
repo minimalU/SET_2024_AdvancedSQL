@@ -1,0 +1,6 @@
+@LampManufacturingAPI_HostAddress = http://localhost:5098
+
+GET {{LampManufacturingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
